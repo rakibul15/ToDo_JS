@@ -18,22 +18,18 @@
     <form action="" id="form">
         <input type="text" name="" id="todo_input">
         <button id="todo_btn" type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+        <div class="select">
+            <select name="todos" id="filter-todo">
+                <option value="all">all</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Uncompleted</option>
+            </select>
+        </div>
     </form>
     <div class="container">
-        <ul >
-            <div id="list">
-                
-            </div>
-        </ul>
-        <div class="details">
-            <ul>
-                   
-            <li id="all"></li>
-            <li id="comp"></li>
-            <li id="to_do"></li>
-            </ul>
-            
-        </div>
+        <ul ><div id="list"></div></ul>
+        <div class="details"></div>
     </div>
    </section>
 

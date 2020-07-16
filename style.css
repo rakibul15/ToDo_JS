@@ -65,11 +65,12 @@ a{
 .todo{
     display: flex;
     justify-content: space-between;
-    font-size: 1rem;
+    font-size: o.7rem;
     padding:2px;
      background-color: #ffff;
     margin: 10px;
     transition: all 0.5s ease;
+    width:350px;
 }
 
 .todo li{
@@ -92,4 +93,14 @@ li{
 .completed{
     text-decoration: line-through;
     opacity: 0.7;
+}
+
+select{
+    padding: 0.5rem;
+    border: none;
+    margin-left: 5px;
+}
+
+.select:after{
+    pointer-events: none;
 }

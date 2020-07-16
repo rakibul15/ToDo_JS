@@ -2,9 +2,7 @@
 let todoInput = document.getElementById("todo_input");
 let todoButton = document.getElementById("todo_btn");
 let todoList = document.getElementById("list");
-let All = document.getElementById("all");
-let Complete_list = document.getElementById("comp");
-let to_do_list = document.getElementById("to_do");
+let filterOption = document.getElementById('filter-todo')
 
 
 
@@ -13,17 +11,8 @@ let to_do_list = document.getElementById("to_do");
 //Event Listener
 todoButton.addEventListener("click", addtodo);
 todoList.addEventListener("click",deleteCheck);
+filterOption.addEventListener("click",filterTodo);
 
-
-
-
-
-
-let count = 0;
-let complete_count=0;
-let flag=0;
-let flag_2=0;
-let todo_count=0;
 
 //Functions
 function addtodo(event) {
@@ -57,15 +46,10 @@ function addtodo(event) {
     trash.classList.add('trash_btn');
     todoDiv.appendChild(trash) ;
     todoList.appendChild(todoDiv);
-    count++;
-    // console.log(count)
 
     //Clear previous Value
     todoInput.value="";
-
-    //Count All
-    All.innerText = 'All :' + count;
-    
+ 
 
 }
 
@@ -78,34 +62,48 @@ function deleteCheck(e){
 
     if(item.classList[0]==='trash_btn'){
         let todo = item.parentElement;
-        todo.remove();
-        count--;
-        All.innerText = 'All :' + count;
-        flag=1;
+        todo.remove();  
        
-       
-    };
+    }
 
     //Complete
     if(item.classList[0]==='complete_btn'){
         let todo = item.parentElement;
         todo.classList.toggle('completed');
-        complete_count++;
-        Complete_list.innerText= 'Completed: ' + complete_count;
-        flag_2=1;
-       
+
         
-    };
-    if(flag==1 && flag_2==1)
-    {
-        complete_count--;
-        console.log(complete_count);
-        Complete_list.innerText= 'Completed: ' + complete_count;
-       
-       
-    };
-    todo_count = count- complete_count;
-    to_do_list.innerText ='Todo: '+  todo_count;
-  
-  
+    }
+ 
+}
+
+
+function filterTodo(e){
+    let todos=todoList.childNodes;
+    console.log(todos);
+    todos.forEach(function(todo){
+        switch(e.target.value){
+            case "all":
+                todo.style.display='flex';
+               
+
+                break;
+            case "completed":
+                if(todo.classList.contains('completed')){
+                    todo.style.display='flex';
+                }
+                else{
+                    todo.style.display='none';
+                }
+            break;
+            case "uncompleted":
+                    if(!todo.classList.contains('completed')){
+                        todo.style.display='flex';
+
+                    }
+                    else{
+                        todo.style.display='none';
+                    }
+            break;
+        }
+    });
 }
